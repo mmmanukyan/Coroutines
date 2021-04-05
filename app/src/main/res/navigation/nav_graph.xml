@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/page1">
+
+    <fragment
+        android:id="@+id/page1"
+        android:name="com.example.coroutines.Page1"
+        android:label="fragment_page1"
+        tools:layout="@layout/fragment_page1" >
+        <action
+            android:id="@+id/action_page1_to_page2"
+            app:destination="@id/page2" >
+            <argument
+                android:name="count"
+                android:defaultValue="0" />
+            <argument
+                android:name="max"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/page2"
+        android:name="com.example.coroutines.Page2"
+        android:label="fragment_page2"
+        tools:layout="@layout/fragment_page2" >
+        <argument
+            android:name="count"
+            app:argType="integer" />
+        <argument
+            android:name="max"
+            app:argType="integer" />
+    </fragment>
+</navigation>
