@@ -13,23 +13,25 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class Page2 : Fragment() {
-    private var binding:FragmentPage2Binding? = null
+    private var binding: FragmentPage2Binding? = null
     private val args: Page2Args by navArgs()
-    private var count:Int = 0
-    set(value) {
-        lifecycleScope.launch(Dispatchers.Default) {
-            if (value >= 0 && value <= args.max) {
-                field = value
-                val vis =  if (field == 0 || field == args.max) View.VISIBLE else View.INVISIBLE
-                binding?.run {
-                    withContext(Dispatchers.Main) {
-                        button3.visibility = vis
-                        textView.text = field.toString()
+    private var count: Int = 0
+        set(value) {
+            lifecycleScope.launch(Dispatchers.Default) {
+                if (value >= 0 && value <= args.max) {
+                    field = value
+                    binding?.run {
+                        val vis =
+                            if (field == 0 || field == args.max) View.VISIBLE else View.INVISIBLE
+                        withContext(Dispatchers.Main) {
+                            button3.visibility = vis
+                            textView.text = field.toString()
+                        }
                     }
                 }
             }
         }
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
