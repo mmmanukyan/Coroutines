@@ -19,15 +19,16 @@ class Page1 : Fragment() {
 
         binding.btn.setOnClickListener {
 
-            val count = binding.editText.text.toString().toInt()
-            val max= binding.editText2.text.toString().toInt()
-
-            val action = Page1Directions.actionPage1ToPage2()
-
-            action.count = count
-            action.max = max
-
-            NavHostFragment.findNavController(this).navigate(action)
+            if(!binding.editText.text.isNullOrEmpty() && !binding.editText2.text.isNullOrEmpty()) {
+                val count = binding.editText.text.toString().toInt()
+                val max = binding.editText2.text.toString().toInt()
+                if (max > 0 && count in 0..max) {
+                    val action = Page1Directions.actionPage1ToPage2()
+                    action.count = count
+                    action.max = max
+                    NavHostFragment.findNavController(this).navigate(action)
+                }
+            }
         }
 
         return binding.root
