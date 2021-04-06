@@ -33,19 +33,18 @@ class Page2 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentPage2Binding.inflate(inflater, container, false)
-        this.binding = binding
-        count = args.count
-
-        binding.button1.setOnClickListener {
-            count++
-        }
-        binding.button2.setOnClickListener {
-            count--
-        }
-        binding.button3.setOnClickListener {
+        return FragmentPage2Binding.inflate(inflater, container, false).apply {
+            binding = this
+            button1.setOnClickListener {
+                count++
+            }
+            button2.setOnClickListener {
+                count--
+            }
+            button3.setOnClickListener {
+                count = args.count
+            }
             count = args.count
-        }
-        return binding.root
+        }.root
     }
 }

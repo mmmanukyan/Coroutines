@@ -13,12 +13,6 @@
         <action
             android:id="@+id/action_page1_to_page2"
             app:destination="@id/page2" >
-            <argument
-                android:name="count"
-                android:defaultValue="0" />
-            <argument
-                android:name="max"
-                android:defaultValue="0" />
         </action>
     </fragment>
     <fragment
