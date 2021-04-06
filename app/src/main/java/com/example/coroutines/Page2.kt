@@ -20,9 +20,10 @@ class Page2 : Fragment() {
         lifecycleScope.launch(Dispatchers.Default) {
             if (value >= 0 && value <= args.max) {
                 field = value
-                withContext(Dispatchers.Main) {
-                    binding?.run {
-                        button3.visibility = if (field == 0 || field == args.max) View.VISIBLE else View.INVISIBLE
+                val vis =  if (field == 0 || field == args.max) View.VISIBLE else View.INVISIBLE
+                binding?.run {
+                    withContext(Dispatchers.Main) {
+                        button3.visibility = vis
                         textView.text = field.toString()
                     }
                 }
